@@ -14,7 +14,7 @@ exports.getListUsers = function (req,res,next) {
     const {page,limit} = req.query;
     let parsePage = parseInt(page)
     let parseLimit = parseInt(limit)
-    let skip = parsePage === 1 ? 0 : (parsePage-1)*parseLimit
+    let skip =  (parsePage-1)*parseLimit
     User.find({}).skip(skip).limit(parseLimit).then(
         users => {
             res.send({
